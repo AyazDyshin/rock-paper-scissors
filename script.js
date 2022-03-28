@@ -14,17 +14,21 @@ const getUserInput = () => {
    while (!arrOfOptions.includes(userInput)){
        userInput = prompt("Enter your choice:").toLowerCase();
    }
+   return userInput;
 }
 
 const playRound = (userInput,computerChoice) => {
-  switch (userInput,computerChoice){
-      case (userInput === computerChoice) :
+  switch(userInput) {
+      case (computerChoice) :
           return "tie";
-      case (userInput === "rock") :
+      case ("rock") :
+           console.log("here");
           return computerChoice === "paper" ? "you loose, paper beats rock" : "you win, rock beats scissors";
-      case (userInput === "paper") :
+      case ("paper") :
          return computerChoice === "scissors" ? "you loose, scissors beat paper" : "you win, paper beats rock";
-      case (userInput === "scissors") :
+      case ("scissors") :
         return computerChoice === "rock" ? "you loose, rock beats scissor" : "you win, scissors beat paper";   
+      default:
+        return "some error";
   }
 }
