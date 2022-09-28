@@ -1,4 +1,8 @@
 const arrOfOptions = ["rock", "paper", "scissors"];
+const currRes = document.querySelector('#currRes');
+const score = document.querySelector('#score');
+let playerScore = 0;
+let computerScore = 0;
 
 const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -9,16 +13,6 @@ const computerPlay = () => {
   return arrOfOptions[computerChoice];
 }
 
-// const getUserInput = () => {
-//   let userInput = '';
-//   while (!arrOfOptions.includes(userInput)) {
-//     userInput = prompt("Enter your choice:").toLowerCase();
-//   }
-//   return userInput;
-// }
-
-const currRes = document.querySelector('#currRes');
-const score = document.querySelector('#score');
 const playRound = (userInput, computerChoice) => {
   switch (userInput) {
     case (computerChoice):
@@ -33,8 +27,7 @@ const playRound = (userInput, computerChoice) => {
       return "some error";
   }
 }
-let playerScore = 0;
-let computerScore = 0;
+
 const updateScore = (res) => {
   if (res != 'tie') {
     res.includes("you win") ? playerScore++ : computerScore++;
