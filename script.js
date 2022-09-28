@@ -9,14 +9,15 @@ const computerPlay = () => {
   return arrOfOptions[computerChoice];
 }
 
-const getUserInput = () => {
-  let userInput = '';
-  while (!arrOfOptions.includes(userInput)) {
-    userInput = prompt("Enter your choice:").toLowerCase();
-  }
-  return userInput;
-}
+// const getUserInput = () => {
+//   let userInput = '';
+//   while (!arrOfOptions.includes(userInput)) {
+//     userInput = prompt("Enter your choice:").toLowerCase();
+//   }
+//   return userInput;
+// }
 
+const currRes = document.querySelector('#currRes');
 const playRound = (userInput, computerChoice) => {
   switch (userInput) {
     case (computerChoice):
@@ -35,12 +36,14 @@ const playRound = (userInput, computerChoice) => {
 const game = () => {
   let playerScore = 0;
   let computerScore = 0;
-  for (let i = 1; i <= 5; i++) {
-    let result = playRound(getUserInput(), computerPlay());
-    result.includes("you win") ? playerScore++ : computerScore++;
-    console.log(result);
-    if (playerScore === 3 || computerScore === 3) break;
-  }
+  const buttons = document.querySelectorAll('button');
+  let counter = 0;
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      currRes.textContent = playRound(button.textContent.toLowerCase(), computerPlay());
+    });
+  });
   if (playerScore === computerScore) console.log(`The score is: You:${playerScore} Computer:${computerScore} therefore it is a tie!`);
   else if (playerScore > computerScore) console.log(`You won! The score is: You:${playerScore} Computer:${computerScore}`);
   else if (playerScore < computerScore) console.log(`You loose! the score is: You:${playerScore} Computer:${computerScore}`);
