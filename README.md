@@ -1,1 +1,1 @@
-# rock-paper-scissors
+A simple app to practice working with DOM.
